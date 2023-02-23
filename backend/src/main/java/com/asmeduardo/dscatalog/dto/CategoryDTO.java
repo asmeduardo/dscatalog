@@ -2,7 +2,7 @@ package com.asmeduardo.dscatalog.dto;
 
 import java.io.Serializable;
 
-import com.asmeduardo.dscatalog.entities.Category;
+import com.asmeduardo.dscatalog.models.Category;
 
 public class CategoryDTO implements Serializable{
 	private static final long serialVersionUID = 1L;

@@ -1,15 +1,17 @@
 package com.asmeduardo.dscatalog.dto;
 
+import com.asmeduardo.dscatalog.models.Category;
+import com.asmeduardo.dscatalog.models.Product;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import com.asmeduardo.dscatalog.entities.Category;
-import com.asmeduardo.dscatalog.entities.Product;
-
 public class ProductDTO implements Serializable {
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	private Long id;
@@ -17,20 +19,20 @@ public class ProductDTO implements Serializable {
 	private String description;
 	private Double price;
 	private String imgUrl;
-	private Instant date;
+	private Instant moment;
 
 	private List<CategoryDTO> categories = new ArrayList<>();
 
 	public ProductDTO() {
 	}
 
-	public ProductDTO(Long id, String name, String description, Double price, String imgUrl, Instant date) {
+	public ProductDTO(Long id, String name, String description, Double price, String imgUrl, Instant moment) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.imgUrl = imgUrl;
-		this.date = date;
+		this.moment = moment;
 	}
 
 	public ProductDTO(Product entity) {
@@ -39,7 +41,7 @@ public class ProductDTO implements Serializable {
 		this.description = entity.getDescription();
 		this.price = entity.getPrice();
 		this.imgUrl = entity.getImgUrl();
-		this.date = entity.getDate();
+		this.moment = entity.getMoment();
 	}
 
 	public ProductDTO(Product entity, Set<Category> categories) {
@@ -87,12 +89,12 @@ public class ProductDTO implements Serializable {
 		this.imgUrl = imgUrl;
 	}
 
-	public Instant getDate() {
-		return date;
+	public Instant getMoment() {
+		return moment;
 	}
 
-	public void setDate(Instant date) {
-		this.date = date;
+	public void setMoment(Instant moment) {
+		this.moment = moment;
 	}
 
 	public List<CategoryDTO> getCategories() {
