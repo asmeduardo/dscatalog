@@ -2,6 +2,7 @@ package com.asmeduardo.dscatalog.controllers;
 
 import com.asmeduardo.dscatalog.dto.CategoryDTO;
 import com.asmeduardo.dscatalog.services.CategoryService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,14 +32,14 @@ public class CategoryController {
     }
 
     @PostMapping
-    public ResponseEntity<CategoryDTO> insertCategory(@RequestBody CategoryDTO dto) {
+    public ResponseEntity<CategoryDTO> insertCategory(@Valid @RequestBody CategoryDTO dto) {
         dto = categoryService.insertCategory(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<CategoryDTO> updateCategory(@PathVariable Long id, @RequestBody CategoryDTO dto) {
+    public ResponseEntity<CategoryDTO> updateCategory(@PathVariable Long id, @Valid @RequestBody CategoryDTO dto) {
         dto = categoryService.updateCategory(id, dto);
         return ResponseEntity.ok().body(dto);
     }

@@ -2,6 +2,7 @@ package com.asmeduardo.dscatalog.controllers;
 
 import com.asmeduardo.dscatalog.dto.ProductDTO;
 import com.asmeduardo.dscatalog.services.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,14 +32,14 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductDTO> insertProduct(@RequestBody ProductDTO dto) {
+    public ResponseEntity<ProductDTO> insertProduct(@Valid @RequestBody ProductDTO dto) {
         dto = productService.insertProduct(dto);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
         return ResponseEntity.created(uri).body(dto);
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ProductDTO> updateProduct(@PathVariable Long id, @RequestBody ProductDTO dto) {
+    public ResponseEntity<ProductDTO> updateProduct(@PathVariable Long id, @Valid @RequestBody ProductDTO dto) {
         dto = productService.updateProduct(id, dto);
         return ResponseEntity.ok().body(dto);
     }

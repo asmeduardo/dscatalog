@@ -1,6 +1,10 @@
 package com.asmeduardo.dscatalog.dto;
 
 import com.asmeduardo.dscatalog.models.User;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -12,8 +16,18 @@ public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+    @Size(min = 3, max = 60, message = "Deve ter entre 3 e 60 caracteres")
+    @NotBlank(message = "Campo obrigatório")
+    @NotNull(message = "Campo obrigatório")
     private String firstName;
+
+    @Size(min = 3, max = 60, message = "Deve ter entre 3 e 60 caracteres")
+    @NotBlank(message = "Campo obrigatório")
+    @NotNull(message = "Campo obrigatório")
     private String lastName;
+
+    @NotBlank(message = "Campo obrigatório")
+    @Email(message = "Favor entrar um email válido")
     private String email;
 
     Set<RoleDTO> roles = new HashSet<>();
