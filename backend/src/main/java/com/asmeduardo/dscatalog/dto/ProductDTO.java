@@ -19,15 +19,12 @@ public class ProductDTO implements Serializable {
     private Long id;
     @Size(min = 2, max = 60, message = "Deve ter entre 2 e 60 caracteres")
     @NotBlank(message = "Campo obrigatório")
-    @NotNull(message = "Campo obrigatório")
     private String name;
 
     @NotBlank(message = "Campo obrigatório")
-    @NotNull(message = "Campo obrigatório")
     private String description;
-
-    @NotNull(message = "Campo obrigatório")
-    @DecimalMin(value = "0", message = "Preço deve ser um valor positivo")
+    
+    @Positive(message = "Preço deve ser um valor positivo")
     private Double price;
 
     @URL(message = "A URL da imagem deve ser válida")
