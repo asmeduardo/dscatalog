@@ -2,6 +2,7 @@ package com.asmeduardo.dscatalog.controllers;
 
 import com.asmeduardo.dscatalog.dto.UserDTO;
 import com.asmeduardo.dscatalog.dto.UserInsertDTO;
+import com.asmeduardo.dscatalog.dto.UserUpdateDTO;
 import com.asmeduardo.dscatalog.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +41,9 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @Valid @RequestBody UserDTO dto) {
-        dto = userService.updateUser(id, dto);
-        return ResponseEntity.ok().body(dto);
+    public ResponseEntity<UserDTO> updateUser(@PathVariable Long id, @Valid @RequestBody UserUpdateDTO dto) {
+        UserDTO newDTO = userService.updateUser(id, dto);
+        return ResponseEntity.ok().body(newDTO);
     }
 
     @DeleteMapping(value = "/{id}")
