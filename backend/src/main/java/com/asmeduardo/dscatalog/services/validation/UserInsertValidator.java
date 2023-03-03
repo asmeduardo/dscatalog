@@ -4,10 +4,10 @@ import com.asmeduardo.dscatalog.controllers.handlers.FieldMessage;
 import com.asmeduardo.dscatalog.dto.UserInsertDTO;
 import com.asmeduardo.dscatalog.models.User;
 import com.asmeduardo.dscatalog.repositories.UserRepository;
-import jakarta.validation.ConstraintValidator;
-import jakarta.validation.ConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
 import java.util.ArrayList;
 import java.util.List;
 

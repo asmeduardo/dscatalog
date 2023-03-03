@@ -2,9 +2,12 @@ package com.asmeduardo.dscatalog.dto;
 
 import com.asmeduardo.dscatalog.models.Category;
 import com.asmeduardo.dscatalog.models.Product;
-import jakarta.validation.constraints.*;
 import org.hibernate.validator.constraints.URL;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Positive;
+import javax.validation.constraints.Size;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.Instant;
